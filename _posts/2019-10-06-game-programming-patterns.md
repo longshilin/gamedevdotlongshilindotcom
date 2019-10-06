@@ -2,7 +2,7 @@
 layout: post
 title: "游戏编程模式学习前言"
 date: 2019-10-06
-categories: Game Programming Patterns
+categories: "Game Programming Patterns"
 tags: Patterns
 excerpt: 从设计模式的角度进入游戏开发领域
 mathjax: true
