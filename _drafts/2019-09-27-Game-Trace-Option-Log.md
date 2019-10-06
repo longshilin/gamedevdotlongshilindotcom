@@ -1,5 +1,5 @@
-﻿---
-layout: post
+﻿﻿---
+layout: draft
 title: "将游戏操作日志持久化保存在文件中"
 date: 2019-09-27
 categories: 工具模块
