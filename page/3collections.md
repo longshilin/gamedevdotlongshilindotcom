@@ -10,6 +10,9 @@ type: page
 {:toc}
 
 ## 工具
+* [好用的软件合集](https://www.cnblogs.com/zhaoqingqing/p/4133671.html)
+    
+    里面有很多很好用的软件，感谢作者的分享。
 
 * [box-shadow generator](http://www.cssmatic.com/box-shadow)
 
