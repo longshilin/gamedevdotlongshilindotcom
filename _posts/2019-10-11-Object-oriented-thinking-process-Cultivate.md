@@ -1,6 +1,6 @@
 ﻿---
 layout: post
-title: "《面向对象的思考过程》读书笔记二："
+title: "《面向对象的思考过程》读书笔记二：面向对象思考过程"
 date: 
 categories: 读书笔记
 tags: 面向对象
