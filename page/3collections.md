@@ -125,23 +125,10 @@ Syntax Theme: Atom Dark or One Dark
 
 * [JS前端开发群月报 -豪情等人维护](http://www.kancloud.cn/jsfront/month/82796)
 
-## 交互设计相关
+## Mac工具软件
+* [Mac上方便好用的截图工具](https://zh.xnipapp.com/)
 
-- [Framer](https://framerjs.com/)
-
-    Design the impossible with Framer
-
-- [FLINTO](https://www.flinto.com/)
-
-    App Prototyping Tools for Designers
-
-- [Principle](http://principleformac.com/)
-
-    Animate Your Ideas, Design Better Apps
-
-- [https://gyrosco.pe/](https://gyrosco.pe/)
-
-    首页的卡片翻动效果非常赞。
+* [NetNewsWire 5 RSS reader for Mac](https://ranchero.com/netnewswire/)
 
 ## Comments
 
