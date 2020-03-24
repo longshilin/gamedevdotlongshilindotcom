@@ -1,0 +1,96 @@
+---
+layout: post
+title: "Launcher中涉及的服务管理"
+date: 2019-12-10
+categories: Lockstep源码笔记
+tags: 
+excerpt: 
+mathjax: true
+---
+
+* content
+{:toc}
+
+Launcher中对各个服务类型进行划分，具体就是根据继承的基类的不同将其划分到不同的类别，比如下面的代码片段中有三个不同的ServiceContainer，它们都是不同模块service的管理类。
+
+```csharp
+_serviceContainer = services as ServiceContainer;
+_mgrContainer = new ManagerContainer();
+_timeMachineContainer = new TimeMachineContainer();
+```
+
+
+
+那么如果将这些众多的类按照基类的不同进行划分呢，我们来看一下源码的实现方式：
+
+```csharp
+var svcs = _serviceContainer.GetAllServices();
+foreach (var service in svcs) {
+    _timeMachineContainer.RegisterTimeMachine(service as ITimeMachine);
+        if (service is BaseService baseService) {
+        _mgrContainer.RegisterManager(baseService);
+    }
+}
+```
+
+首先上面代码中的`_serviceContainer`对象是`MainScript`(主入口脚本)在`DoAwake()`方法中传入。而在`MainScript`脚本中实例化这个`_serviceContainer`对象，有意思的就在new这个对象上。下面接着来稍微说一下。
+
+![](https://longshilin.com/images/20191024120647.png)
+
+上面图片是`MainScript`中的实例化，实际上是先实例化UnityServiceContainer的父类的构造函数，最后在实例化子类的构造函数。因此，实际的执行还有下面的代码：
+
+![](https://longshilin.com/images/20191024121925.png)
+
+![](https://longshilin.com/images/20191024121945.png)
+
+因此，`_serviceContainer`总共注册的服务有11个：
+
+```
+RandomService
+CommonStateService
+ConstStateService
+SimulatorService
+NetworkService
+IdService
+GameResourceService
+GameStateService
+GameConfigService
+GameInputService
+UnityGameViewService
+```
+
+接着就是将这些服务按照基类的不同分别放入不同的服务容器内。`_timeMachineContainer`中存放的是`_serviceContainer`注册的服务中实现了`ITimeMachine`接口的所有子类：
+
+```
+RandomService
+ConstStateService
+SimulatorService
+NetworkService
+IdService
+GameResourceService
+GameStateService
+GameConfigService
+UnityGameViewService
+```
+
+其中CommonStateService和GameInputService两个服务没有实现ITimeMachine接口，因为他们不需要预测回滚的功能，所以也就不需要实现这个接口。
+
+`_mgrContainer`中存放的是`_serviceContainer`注册的服务中继承了`BaseService`的所有实现类：
+
+```
+RandomService
+ConstStateService
+SimulatorService
+NetworkService
+GameResourceService
+GameStateService
+GameConfigService
+UnityGameViewService
+```
+
+其中CommonStateService和GameInputService以及IdService这三个都没有实现BaseService基类，因为这三个类不需要DoAwake、DoStart、DoUpdate等函数驱动生命周期，所以不需要继承该基类。
+
+
+
+
+
