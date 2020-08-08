@@ -2,8 +2,8 @@
 layout: post
 title: "git的一些常见问题记录"
 date: 2019-09-24
-categories: git 
-tags: git
+categories: Git版本控制
+tags: Git Tips
 excerpt: 记录工作中遇到的一些和git相关的问题及解决方案
 mathjax: true
 ---

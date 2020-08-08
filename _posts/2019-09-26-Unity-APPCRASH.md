@@ -1,10 +1,10 @@
 ﻿---
 layout: post
-title: "Unity Crash"
+title: "记录一次Unity启动游戏即崩溃的例子"
 date: 2019-09-26
-categories: Unity
-tags: "unity crash"
-excerpt: Unity APPCRASH!!! 
+categories: Unity开发记录
+tags: Unity
+excerpt: Unity AStart插件导出地图配置
 mathjax: true
 ---
 
