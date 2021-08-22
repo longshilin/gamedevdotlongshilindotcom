@@ -4,7 +4,7 @@ title: "Unity Tips"
 date: 2020-04-01
 categories: UnityTips
 tags: 
-excerpt: 
+excerpt: 收集一些Unity Tips
 mathjax: true
 ---
 
@@ -56,5 +56,6 @@ Global 将辅助图标固定在世界空间方向。
 #endif
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTQ2NDc4OTYsMTYyODU5MDkwNl19
+eyJoaXN0b3J5IjpbLTE3NDE4ODIzNzQsLTE5NTQ2NDc4OTYsMT
+YyODU5MDkwNl19
 -->
