@@ -40,6 +40,21 @@ Center 将辅助图标定位在游戏对象渲染边界的中心。
 
 Local 保持辅助图标相对于游戏对象的旋转。
 Global 将辅助图标固定在世界空间方向。
+
+### Tips-3 Unity可交互对话框
+图片演示
+
+![](https://longshilin.com/images/20191117092517.png)
+
+代码片段
+```c#
+#if UNITY_EDITOR
+            if (Application.unityVersion != "2018.2.20f1" || Application.platform != RuntimePlatform.WindowsEditor)
+            {
+                UnityEditor.EditorUtility.DisplayDialog("警告", "此热更新 Demo 使用的资源包仅适用于 Unity 2018.2.20f1、Windows 系统平台版本，您当前使用的 Unity 版本或系统平台不匹配，这可能导致材质丢失等显示错误。", "知道了");
+            }
+#endif
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyODU5MDkwNl19
+eyJoaXN0b3J5IjpbLTE5NTQ2NDc4OTYsMTYyODU5MDkwNl19
 -->
