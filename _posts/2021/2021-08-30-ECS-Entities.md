@@ -4,7 +4,7 @@ title: "ECS Entities"
 date: 2021-08-31 
 categories: DOTS 
 tags: unity ecs dots 
-excerpt: Entities官方文档译文（Entities 0.17.0-preview.42）
+excerpt: Entities官方文档译文（Entities 0.17.0-preview.42），[原文链接](https://docs.unity3d.com/Packages/com.unity.entities@0.17/manual/ecs_entities.html)
 ---
 * content 
 {:toc}
@@ -28,12 +28,27 @@ Entities是 `Entity Component System` 体系结构的三个主要元素之一。
 使用 [EntityManager.CreateEntity](#) 函数中的一个来创建实体，ECS在于EntityManager相同的World中创建实体。
 
 你可以通过以下方式逐个创建实体：
-- 
+- 使用 ComponentType 数组创建组件实体
+- 使用 [EntityArchetype](#) 创建组件实体
+- 使用 [Instantiate](#) 拷贝一个现有的实体，包括其当前数据。
+- 创建一个没有组件的实体，然后向其添加组件。（你可以立即添加组件，或者在需要其他组件时添加。）
 
-<!--
-https://interpreter.caiyunai.com/html/612e3c17e03ec236995fcbd2
--->
+你还可以一次创建多个实体：
 
+- 使用 [CreateEntity](#) 将具有相同原型的新实体填充NativeArray。
+- 使用 [Instantiate](#) 将现有实体的副本填充NativeArray，包括其当前数据。
+
+## 添加和删除组件
+
+创建实体后，您可以添加或删除组件。执行此操作时，受影响实体的原型会发生变化，EntityManager 必须将更改后的数据移动到新的内存块，并压缩原始块中的组件数组。
+
+对导致结构变化的实体的更改——即添加或删除更改 `SharedComponentData` 值的组件，以及破坏实体——不能在作业内部完成，因为这些可能会使作业正在处理的数据无效。相反，你将这些类型的修改以命令的形式添加到 [EntityCommandBuffer](https://docs.unity3d.com/Packages/com.unity.entities@0.17/api/Unity.Entities.EntityCommandBuffer.html) 并在Job完成之后执行这个 command buffer.
+
+EntityManager 提供了从单个实体以及 NativeArray 中的所有实体中删除组件的功能。有关更多信息，请参阅有关文档 [Components](https://docs.unity3d.com/Packages/com.unity.entities@0.17/manual/ecs_components.html).
+
+## 迭代实体
+
+迭代具有一组匹配组件的所有实体，是 ECS 架构的核心。参考 [Accessing entity data](https://docs.unity3d.com/Packages/com.unity.entities@0.17/manual/chunk_iteration.html).
 
 
 
